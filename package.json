@@ -1,0 +1,19 @@
+{
+  "name": "lightsout",
+  "version": "0.0.1",
+  "description": "An asymetric cooperative game",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavinhenderson/GUTS-2017.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gavinhenderson/GUTS-2017/issues"
+  },
+  "homepage": "https://github.com/gavinhenderson/GUTS-2017#readme"
+}
