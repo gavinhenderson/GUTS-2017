@@ -2,3 +2,5 @@
 GUTSoc Hackathon
 
 An asymmetric cooperative game #MIH
+
+Antony Capper
