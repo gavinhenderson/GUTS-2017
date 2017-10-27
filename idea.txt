@@ -1,17 +1,16 @@
 Discussion notes:
 2 players
 2D and 3D?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?! Tony thinks this is stupid
-"3D renders in 2D" - Gavin 
-"everythings rendered in 2D" - Tony 
+"3D renders in 2D" - Gavin
+"everythings rendered in 2D" - Tony
 Final decision: 2D
 Whats the top down - hancker and theif story - hacker breaking via hacking
-into building 
+into building
 theif is doing the robbin
 map dark unless you have that room - maze like
-only vision in that room 
+only vision in that room
 No longer using Unity 
 Using P5JS- like using processing but in a web browser
-need 2d collison!! everything else drawing on screen 
-and web server - web sockets - "coordiating the co-ordinates" - lovely statement by antony 
-okay..... so lets the games BEGIN 
-
+need 2d collison!! everything else drawing on screen
+and web server - web sockets - "coordiating the co-ordinates" - lovely statement by antony
+okay..... so lets the games BEGIN
