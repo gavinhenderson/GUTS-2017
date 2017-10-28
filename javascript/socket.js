@@ -21,3 +21,7 @@ function getPlayerNo(){
 myRoom.on('sendPlayerNo',function(pNo){
 	gameID = pNo.playerNo;
 });
+
+myRoom.on('kick',function(){
+	document.location.href="/";
+})

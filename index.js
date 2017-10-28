@@ -37,11 +37,38 @@ function createRoom(roomName){
   var room = io.of(roomName);
   var x = 500;
   var y = 500;
+  var Player1 = false;
+  var Player2 = false;
 
   //Room connection function
   room.on('connection',function(socket){
-    var playerID = PlayerCount;
-    PlayerCount ++;
+    //Set playerID
+    var playerID;
+    if (Player1 == false)
+    {
+        playerID = 1;
+        Player1 = true
+    }
+    else if (Player2 == false)
+    {
+        playerID = 2;
+        Player2 = true;
+    }
+    else{
+        socket.emit('kick');
+    }
+
+    socket.on('disconnect', function () {
+        if(playerID == 1){
+          Player1 = false;
+        }
+        else if (playerID == 2)
+        {
+          Player2 = false;
+        }
+    });
+
+    //var playerID = PlayerCou
     console.log("Player "+playerID + " connected");
 
     //coordinates setter
