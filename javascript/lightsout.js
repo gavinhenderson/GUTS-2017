@@ -3,6 +3,7 @@ var player;
 var div;
 var cw;
 var ch;
+var gameID;
 
 var b = 6;
 
@@ -20,6 +21,7 @@ function setup(){
 	poly.push(makeWall(cw - 150, ch - 150, cw - 150, ch));
 
 	player = new Player(500,500,20,20, poly);
+	getPlayerNo();
 }
 
 function makeWall(x1, y1, x2, y2){
@@ -87,9 +89,11 @@ function draw(){
 		endShape(CLOSE);
 		pop();
 	}
-	if(keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW) 
-		|| keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
-		player.userInput();
+	if(gameID == 1){
+		if(keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW) 
+			|| keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
+			player.userInput();
+		}
 	}
-	player.drawPlayer();
+	player.drawPlayer(gameID);
 }
