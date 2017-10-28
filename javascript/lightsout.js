@@ -1,4 +1,5 @@
 var player;
+var guard;
 // Get lightsout div width
 var div;
 var cw;
@@ -54,6 +55,7 @@ function setup(){
 
 
 	player = new Player(500,500,20,20, poly);
+	guard = new Guard(100,100,20,20, poly,[[200,200],[100,100],[300,50]])
 }
 
 function makeWall(x1, y1, x2, y2){
@@ -126,9 +128,10 @@ function draw(){
 		endShape(CLOSE);
 		pop();
 	}
-	if(keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW) 
+	if(keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW)
 		|| keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
 		player.userInput();
 	}
 	player.drawPlayer();
+	guard.drawGuard();
 }
