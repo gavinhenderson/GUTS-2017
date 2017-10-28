@@ -19,5 +19,5 @@ function getPlayerNo(){
 }
 
 myRoom.on('sendPlayerNo',function(pNo){
-	gameID = pNo;
+	gameID = pNo.playerId;
 });

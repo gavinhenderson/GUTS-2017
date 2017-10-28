@@ -60,7 +60,7 @@ function createRoom(roomName){
 
     socket.on('getPlayerNo', function(){
       socket.emit('sendPlayerNo',{
-        'playerNo':playerId
+        'playerNo':playerID
       });
     })
   });
