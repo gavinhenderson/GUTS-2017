@@ -8,7 +8,7 @@
   $(function () {
     $( "#hostbutton" ).click(function() {
         console.log("Game hosted")
-        socket.emit('newRoom',$('#uniqueid').val());
+        socket.emit('newRoom',$('#hostcode').val());
         window.location.href = window.location.href + "play?id=" + $('#hostcode').val();
     });
     $( "#joinbutton" ).click(function() {

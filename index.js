@@ -30,7 +30,7 @@ io.on('connection', function(socket){
 
 //Create a new room
 function createRoom(roomName){
-  console.log("New room made");
+  console.log("Created Room: "+ roomName);
 
   //Create a room
   var room = io.of(roomName);
@@ -39,6 +39,7 @@ function createRoom(roomName){
 
   //Room connection function
   room.on('connection',function(socket){
+    console.log("Someone connected to: "+roomName);
 
     //coordinates setter
     socket.on('setCoordinates', function(coordinates){
