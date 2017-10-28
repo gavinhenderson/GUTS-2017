@@ -117,7 +117,12 @@ function makeBox(x, y, w, h){
 
 function mouseClicked(){
 	if(gameID == 2){
-		dm.showMenu(mouseX, mouseY);
+		for(i = 0; i < rooms.length; i++){
+			if(rooms[i].collide(mouseX, mouseY)){
+				rooms[i].showMenu(mouseX, mouseY);
+				return;
+			}
+		}
 	}
 }
 
@@ -129,12 +134,10 @@ function draw(){
 		rooms[i].draw();
 	}
 	for(i = 0; i < rooms.length; i++){
-		rooms[i].drawMenu();
-	}
-	for(i = 0; i < rooms.length; i++){
 		rooms[i].dark(player.x, player.y);
 	}
 
+	console.log("test");
 	pop();
 	for(i=0; i < poly.length; i++){
 		push();
