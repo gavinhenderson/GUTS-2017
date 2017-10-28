@@ -4,18 +4,29 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.use(express.static('public'))
 
-
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
-  io.emit('handshake', 'room1');
-  console.log('a user connected');
+  socket.on('newRoom', function(roomName){
+    createRoom(roomName);
+    console.log('this ran');
+  });
   socket.on('disconnect', function(){
-    console.log('user disconnected');
   });
 });
+
+function createRoom(roomName){
+  console.log(roomName);
+  var room = io.of(roomName);
+  room.on('connection',function(socket){
+    console.log("User connected to "+roomName);
+    socket.on('disconnect', function(){
+      console.log("User disconnect from "+roomName);
+    });
+  });
+}
 
 http.listen(80, function(){
   console.log('listening on *:3000');
