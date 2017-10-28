@@ -13,3 +13,11 @@ myRoom.on('updateCoords',function(coords){
   player.y = coords.y;
   console.log(coords);
 });
+
+function getPlayerNo(){
+	myRoom.emit('getPlayerNo');
+}
+
+myRoom.on('sendPlayerNo',function(pNo){
+	gameID = pNo;
+});

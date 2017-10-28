@@ -31,6 +31,7 @@ io.on('connection', function(socket){
 //Create a new room
 function createRoom(roomName){
   console.log("Created Room: "+ roomName);
+  var PlayerCount = 1;
 
   //Create a room
   var room = io.of(roomName);
@@ -39,7 +40,9 @@ function createRoom(roomName){
 
   //Room connection function
   room.on('connection',function(socket){
-    console.log("Someone connected to: "+roomName);
+    var playerID = PlayerCount;
+    PlayerCount ++;
+    console.log("Player "+playerID + " connected");
 
     //coordinates setter
     socket.on('setCoordinates', function(coordinates){
@@ -54,6 +57,12 @@ function createRoom(roomName){
         'y': y
       });
     });
+
+    socket.on('getPlayerNo', function(){
+      socket.emit('sendPlayerNo',{
+        'playerNo':playerId
+      });
+    })
   });
 }
 
