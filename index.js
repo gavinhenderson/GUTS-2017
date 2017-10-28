@@ -2,7 +2,10 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(express.static('html'));
+app.use("/p5",express.static('p5'));
+app.use("/javascript",express.static('javascript'))
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
