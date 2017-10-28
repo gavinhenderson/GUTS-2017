@@ -1,11 +1,29 @@
 <html>
 <head>
-  <link rel = "stylesheet"
-   type = "text/css"
-   href = "index.css" />
- </head>
+  <link rel = "stylesheet" type = "text/css" href = "index.css" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+  function JoinGame(){
+    console.log("Join "+document.getElementById('joincode').value);
+  }
+  function BeginHost(){
+    console.log("Youre hosting a game");
+  }
+
+  $(function () {
+        var socket = io('/room1');
+        socket.on('handshake', function(){
+            console.log("handshook");
+        });
+    });
+  </script>
+</head>
 </head>
 <body>
-  <div id="MainBox">This is the homepage<div>
+  <div id="MainBox">
+    <input id="joincode" type="text" value="JoinCode"><button onclick="JoinGame()">Join</button></br>
+    <button onclick="BeginHost()">Host</button>
+  </div>
 </body>
 </html>
