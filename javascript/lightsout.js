@@ -1,21 +1,22 @@
-var room;
+var player;
+// Get lightsout div width
+var div;
+var cw;
+var ch;
 
 function setup(){
-	console.log("Start");	
-	// Get lightsout div width
-	var div = document.getElementById('lightsout');
-	var cw = div.offsetWidth;
-	var ch = div.offsetHeight;
-	console.log(ch);	
-	console.log(cw);	
-
+	div = document.getElementById('lightsout');
+	cw = div.offsetWidth;
+	ch = div.offsetHeight;
 	// Create canvas of div width
 	var c = createCanvas(cw, ch);
 	c.parent("lightsout");
-	background(0,120,0);	
 
-	
-	//paint();
+	player = new Player(500,500,40,40);
+}
 
-	console.log("End");
+function draw(){
+	background(0,120,0);
+	player.userInput();
+	player.drawPlayer();
 }
