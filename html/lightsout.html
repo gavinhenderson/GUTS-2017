@@ -18,11 +18,12 @@ var roomCode = gup('id', window.location.href);
 var genericSocket = io("/");
 genericSocket.emit('newRoom',roomCode);
 var myRoom = io("/"+roomCode);
-function updateCoords(pushX,pushY){
-	myRoom.emit('pushCoordinates',{
-		'x':pushX,
-		'y':pushY
-	});
+function setCoordinates(x,y){
+	myRoom.emit('setCoordinates',{'x':x,'y':y});
+}
+
+function getCoordinates(){
+	myRoom.emit('getCoordinates')
 }
 </script>
 <script language="javascript" type="text/javascript" src="../p5/p5.js"></script>
@@ -31,7 +32,7 @@ function updateCoords(pushX,pushY){
 <script language="javascript" type="text/javascript" src="../javascript/lightsout.js"></script>
 <script language="javascript" type="text/javascript" src="../javascript/player.js"></script>
 <script>
-	myRoom.on('pullCoordinates',function(coords){
+	myRoom.on('updateCoords',function(coords){
 		player.x = coords.x;
 		player.y = coords.y;
 		console.log(coords);
