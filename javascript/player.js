@@ -1,5 +1,5 @@
 function Player(x, y, w, h, poly){
-	this.s = 10;
+	this.s = 5;
 	this.x = x;
 	this.y = y;
 	this.w = w;
@@ -97,7 +97,9 @@ function Player(x, y, w, h, poly){
 	}
 
 	this.drawPlayer = function(){
-		getCoordinates();
+		if(gameID != 1){
+			getCoordinates();
+		}
 		push();
 		fill(0,0,0);
 		rect(this.x, this.y, this.w, this.h);
