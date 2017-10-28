@@ -1,43 +1,54 @@
+//Player sprite object
 var player;
+
+//Guard sprite object
 var guard;
-// Get lightsout div width
+
+//Userd to put canvase on page
 var div;
 var cw;
 var ch;
-var gameID;
 
-var dm;
+//Tell which player is currently playing
+var gameID;
 
 var b = 6;
 
+//polygons drawn to the canvase
 var poly = [];
+
+//Rooms on the canvas
 var rooms = [];
 
 function setup(){
+	//setup the
 	div = document.getElementById('lightsout');
 	cw = div.offsetWidth;
 	ch = div.offsetHeight;
+
 	// Create canvas of div width
 	var c = createCanvas(cw, ch);
 	c.parent("lightsout");
 
-	rooms.push(new Room(cw - 150, ch - 150, 150, 150,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw - 150, ch - 150 -295, 150, 295,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw - 150, ch - 150 -295 - 295, 150, 295,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw - 150 - 290, ch - 265, 290, 265,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw - 150 - 100, ch - 385, 100, 120,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100, ch -385 - 60, 100, 60,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100, ch -385 - 60 - 245, 100, 245,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100, ch -385 - 60 - 245 - 50, 100, 50,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100 - 375, ch - 265 - 300, 375, 300,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 - 290 - 570, ch - 265, 570, 265,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 - 290 - 570 - 285, ch - 265, 285, 265,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw - 150, ch - 150, 150, 150,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 - 290 - 570 - 285, ch -740, 670, 475,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100 -150, ch -740, 150, 175,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100 -150 -175 -50, ch -740, 225, 175,["Hello1", "Hello2", "Hello3"]));
-	rooms.push(new Room(cw -150 -100 -150 -175 -50, ch -740, 50, 50,["Hello1", "Hello2", "Hello3"]));
+	//create rooms (used for blackout)
+	rooms.push(new Room(cw - 150, ch - 150, 150, 150));
+	rooms.push(new Room(cw - 150, ch - 150 -295, 150, 295));
+	rooms.push(new Room(cw - 150, ch - 150 -295 - 295, 150, 295));
+	rooms.push(new Room(cw - 150 - 290, ch - 265, 290, 265));
+	rooms.push(new Room(cw - 150 - 100, ch - 385, 100, 120));
+	rooms.push(new Room(cw -150 -100, ch -385 - 60, 100, 60));
+	rooms.push(new Room(cw -150 -100, ch -385 - 60 - 245, 100, 245));
+	rooms.push(new Room(cw -150 -100, ch -385 - 60 - 245 - 50, 100, 50));
+	rooms.push(new Room(cw -150 -100 - 375, ch - 265 - 300, 375, 300));
+	rooms.push(new Room(cw -150 - 290 - 570, ch - 265, 570, 265));
+	rooms.push(new Room(cw -150 - 290 - 570 - 285, ch - 265, 285, 265));
+	rooms.push(new Room(cw - 150, ch - 150, 150, 150));
+	rooms.push(new Room(cw -150 - 290 - 570 - 285, ch -740, 670, 475));
+	rooms.push(new Room(cw -150 -100 -150, ch -740, 150, 175));
+	rooms.push(new Room(cw -150 -100 -150 -175 -50, ch -740, 225, 175));
+	rooms.push(new Room(cw -150 -100 -150 -175 -50, ch -740, 50, 50));
 
+	//create walls
 	poly.push(makeBox(0, 0, cw, ch));
 	poly.push(makeWall(cw - 150, ch - 150, cw - 150, ch));
 	poly.push(makeWall(cw - 150, ch - 150, cw - 40, ch - 150)); // HORIZONTAL
@@ -75,10 +86,13 @@ function setup(){
 	poly.push(makeWall(cw - 250, ch - 265, cw - 220, ch - 265)); // HORIZONTAL
 	poly.push(makeWall(cw - 180, ch - 265, cw - 150, ch - 265)); // HORIZONTAL
 
-
-
+	//make player on canvase
 	player = new Player(500,500,20,20, poly);
+
+	//find out which player is playing
 	getPlayerNo();
+
+	//make guard on canvas
 	guard = new Guard(100,100,20,20, poly,[[200,200],[100,100],[300,50]])
 }
 
@@ -132,6 +146,7 @@ function draw(){
 	background(0,120,0);
 	push();
 	strokeWeight(0);
+
 	for(i = 0; i < rooms.length; i++){
 		rooms[i].draw();
 	}
@@ -139,11 +154,11 @@ function draw(){
 		rooms[i].dark(player.x, player.y);
 	}
 
-	console.log("test");
+	//console.log("test");
 	pop();
 	for(i=0; i < poly.length; i++){
 		push();
-		fill(0, 0, 255);
+		fill(0, 0, 0);
 		beginShape();
 		for(j=0; j < poly[i].length; j++){
 			vertex(poly[i][j].x,poly[i][j].y);

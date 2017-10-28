@@ -1,4 +1,4 @@
-function Room(x, y, w, h, list){
+function Room(x, y, w, h){
 	this.x = x;
 	this.y = y;
 	this.w = w;
@@ -7,7 +7,7 @@ function Room(x, y, w, h, list){
 	this.mx = x;
 	this.my = y;
 
-	this.list = list;
+	//this.list = list;
 	this.mh = 30;
 
 	this.visible = true;
@@ -31,10 +31,11 @@ function Room(x, y, w, h, list){
 
 	this.drawMenu = function(){
 		if(this.clicked){
-			for(i = 0; i < this.list.length; i++){
-				rect(this.mx, this.my, 100, this.mh);
+			console.log(this.list.length)
+			//for(i = 0; i < this.list.length; i++){
+				//rect(this.mx, this.my, 100, this.mh);
 				//this.drawMenuOp(this.mh * i, this.mh, list[i]);
-			}
+			//}
 		}
 	}
 
@@ -71,19 +72,21 @@ function Room(x, y, w, h, list){
 		if(collidePointRect(x, y, this.x, this.y, this.w, this.h)){
 			this.mx = x;
 			this.my = y;
-			this.clicked = true;
-		}else{
 			this.clicked = false;
+		}else{
+			this.clicked = true;
 		}
 		pop();
 	}
 
 	this.dark = function(x, y){
+		if(gameID==1){
 		if(!collidePointRect(x, y, this.x, this.y, this.w, this.h)){
 			fill(0);
 			rect(this.x, this.y, this.w, this.h);
 		}
 		this.drawMenu();
+	}
 	}
 
 	this.show = function(){
