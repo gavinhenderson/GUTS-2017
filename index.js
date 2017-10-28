@@ -11,6 +11,10 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/play', function(req,res){
+  res.sendFile(__dirname + "/html/lightsout.html");
+});
+
 io.on('connection', function(socket){
   socket.on('newRoom', function(roomName){
     createRoom(roomName);
@@ -25,6 +29,12 @@ function createRoom(roomName){
   var room = io.of(roomName);
   room.on('connection',function(socket){
     console.log("User connected to "+roomName);
+    socket.on('pushCoordinates', function(coordinates){
+      room.emit('pullCoordinates',{
+        'x': coordinates.x,
+        'y': coordinates.y
+      })
+    });
     socket.on('disconnect', function(){
       console.log("User disconnect from "+roomName);
     });
@@ -32,5 +42,5 @@ function createRoom(roomName){
 }
 
 http.listen(80, function(){
-  console.log('listening on *:3000');
+  console.log('listening on localhost:80');
 });
