@@ -30,10 +30,13 @@ io.on('connection', function(socket){
 
 //Create a new room
 function createRoom(roomName){
+  console.log("New room made");
+
   //Create a room
   var room = io.of(roomName);
   var x = 500;
   var y = 500;
+
   //Room connection function
   room.on('connection',function(socket){
 

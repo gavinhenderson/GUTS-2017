@@ -16,7 +16,7 @@ function gup( name, url ) {
 }//from SO
 var roomCode = gup('id', window.location.href);
 var genericSocket = io("/");
-genericSocket.emit('newRoom',roomCode);
+//genericSocket.emit('newRoom',roomCode);
 var myRoom = io("/"+roomCode);
 function setCoordinates(x,y){
 	myRoom.emit('setCoordinates',{'x':x,'y':y});
