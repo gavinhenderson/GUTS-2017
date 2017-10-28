@@ -4,7 +4,9 @@ var div;
 var cw;
 var ch;
 
-var poly = [[],[],[]];
+var b = 6;
+
+var poly = [];
 
 function setup(){
 	div = document.getElementById('lightsout');
@@ -14,33 +16,76 @@ function setup(){
 	var c = createCanvas(cw, ch);
 	c.parent("lightsout");
 
-	poly[0][0] = createVector(0, 0);
-	poly[0][1] = createVector(0, 100);
-	poly[0][2] = createVector(200, 400);
-	poly[0][3] = createVector(300, 400);
-	poly[0][4] = createVector(300, 400);
-	poly[0][5] = createVector(400, 400);
-	poly[0][6] = createVector(400, 300);
-	poly[0][7] = createVector(300, 300);
-	poly[0][8] = createVector(300, 0);
+	poly.push(makeBox(0, 0, cw, ch));
+	poly.push(makeWall(cw - 150, ch - 150, cw - 150, ch));
 
-	poly[1][0] = createVector(500, 200);
-	poly[1][1] = createVector(600, 200);
-	poly[1][2] = createVector(600, 300);
-	poly[1][3] = createVector(500, 300);
+	player = new Player(500,500,20,20, poly);
+}
 
-	player = new Player(500,500,25,25, poly);
+function makeWall(x1, y1, x2, y2){
+	temp = [];
+	m = (y2 - y1)/(x2 - x1);
+	bt = b/2;
+	if(m == 0){
+		temp.push(createVector(x1, y1 - bt));
+		temp.push(createVector(x1, y1 + bt));
+		temp.push(createVector(x2, y2 + bt));
+		temp.push(createVector(x2, y2 - bt));
+	}else if(m == Infinity){
+		temp.push(createVector(x1 - bt, y1));
+		temp.push(createVector(x1 + bt, y1));
+		temp.push(createVector(x2 + bt, y2));
+		temp.push(createVector(x2 - bt, y2));
+	}
+	return temp;
+}
+
+function makeBox(x, y, w, h){
+	temp = [];
+	bt = b/2;
+	temp.push(createVector(x + bt, y + bt));
+	temp.push(createVector(x + w - bt, y + bt));
+	temp.push(createVector(x + w - bt, y + h - bt));
+	temp.push(createVector(x + bt, y + h - bt));
+	temp.push(createVector(x + bt, y - bt));
+	temp.push(createVector(x - bt, y - bt));
+	temp.push(createVector(x - bt, y + h + bt));
+	temp.push(createVector(x + w + bt, y + h + bt));
+	temp.push(createVector(x + w + bt, y - bt));
+	temp.push(createVector(x - bt, y - bt));
+	return temp;
 }
 
 function draw(){
 	background(0,120,0);
-	fill(0, 0, 255);
+	push();
+	fill(255);
+	strokeWeight(b);
+	rect(cw - 150, ch - 150, 150, 150);
+	rect(cw - 150, ch - 150 -295, 150, 295);
+	rect(cw - 150, ch - 150 -295 - 295, 150, 295);
+	fill(255,0,0);
+	rect(cw - 150 - 290, ch - 265, 290, 265);
+	rect(cw - 150 - 100, ch - 385, 100, 120);
+	fill(255);
+	rect(cw -150 -100, ch -385 - 60, 100, 60);
+	rect(cw -150 -100, ch -385 - 60 - 245, 100, 245);
+	rect(cw -150 -100, ch -385 - 60 - 245 - 50, 100, 50);
+	rect(cw -150 -100 - 375, ch - 265 - 300, 375, 300);
+	rect(cw -150 - 290 - 570, ch - 265, 570, 265);
+	rect(cw -150 - 290 - 570 - 285, ch - 265, 285, 265);
+	fill(255);
+	rect(cw - 150, ch - 150, 150, 150);
+	pop();
 	for(i=0; i < poly.length; i++){
+		push();
+		fill(0, 0, 255);
 		beginShape();
 		for(j=0; j < poly[i].length; j++){
 			vertex(poly[i][j].x,poly[i][j].y);
 		}
 		endShape(CLOSE);
+		pop();
 	}
 	if(keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW) 
 		|| keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)){
