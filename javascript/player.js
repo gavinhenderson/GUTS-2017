@@ -21,7 +21,6 @@ function Player(x, y, w, h, poly){
 			if(hitt && keyIsDown(UP_ARROW)) polylist[2] = poly[i] 
 			if(hitb && keyIsDown(DOWN_ARROW)) polylist[3] = poly[i] 
 		}
-		console.log(polylist);
 		if(polylist[0] != 0 || polylist[1] != 0 || polylist[2] != 0 || polylist[3] != 0){
 			for(i = 0; i < polylist.length; i++){
 				this.collisions(polylist[0], polylist[1], polylist[2], polylist[3]);
