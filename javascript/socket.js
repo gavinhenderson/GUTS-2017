@@ -1,8 +1,10 @@
 function setCoordinates(x,y){
+	console.log("setting coords");
 	myRoom.emit('setCoordinates',{'x':x,'y':y});
 }
 
 function getCoordinates(){
+	console.log("getting coords")
 	myRoom.emit('getCoordinates')
 }
 
