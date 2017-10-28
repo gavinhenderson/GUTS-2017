@@ -96,11 +96,10 @@ function draw(){
 	background(0,120,0);
 	push();
 	fill(255);
-	strokeWeight(b);
+	strokeWeight(0);
 	rect(cw - 150, ch - 150, 150, 150);
 	rect(cw - 150, ch - 150 -295, 150, 295);
 	rect(cw - 150, ch - 150 -295 - 295, 150, 295);
-	fill(255,0,0);
 	rect(cw - 150 - 290, ch - 265, 290, 265);
 	rect(cw - 150 - 100, ch - 385, 100, 120);
 	fill(255);
