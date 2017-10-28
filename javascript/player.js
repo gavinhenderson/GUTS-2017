@@ -19,7 +19,7 @@ function Player(x, y, w, h, poly){
 			if(hitl || hitr || hitu || hitd){
 				polylist.push(poly[i]);
 			}
-		}	
+		}
 		if(polylist.length != 0){
 			for(i = 0; i < polylist.length; i++){
 				this.collisions(polylist[i]);
