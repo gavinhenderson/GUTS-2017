@@ -4,14 +4,41 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
 </head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+function gup( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}//from SO
+var roomCode = gup('id', window.location.href);
+var genericSocket = io("/");
+genericSocket.emit('newRoom',roomCode);
+var myRoom = io("/"+roomCode);
+function setCoordinates(x,y){
+	myRoom.emit('setCoordinates',{'x':x,'y':y});
+}
 
+function getCoordinates(){
+	myRoom.emit('getCoordinates')
+}
+</script>
 <script language="javascript" type="text/javascript" src="../p5/p5.js"></script>
 <script language="javascript" type="text/javascript" src="../p5/addons/p5.dom.js"></script>
 <script language="javascript" type="text/javascript" src="../p5/addons/p5.collide2d.js"></script>
 <script language="javascript" type="text/javascript" src="../javascript/lightsout.js"></script>
 <script language="javascript" type="text/javascript" src="../javascript/player.js"></script>
-
+<script>
+	myRoom.on('updateCoords',function(coords){
+		player.x = coords.x;
+		player.y = coords.y;
+		console.log(coords);
+	});
+</script>
 <body>
 	<div class="game" id="lightsout"></div>
 </body>
-</html>	
+</html>

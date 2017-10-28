@@ -33,6 +33,7 @@ function setup(){
 }
 
 function draw(){
+	getCoordinates();
 	background(0,120,0);
 	fill(0, 0, 255);
 	for(i=0; i < poly.length; i++){
@@ -48,4 +49,7 @@ function draw(){
 	}
 	player.drawPlayer();
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ec19ecd41adc8cf7bf15a64e81f533677f0f33b
