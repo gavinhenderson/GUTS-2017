@@ -15,8 +15,10 @@ function gup( name, url ) {
     return results == null ? null : results[1];
 }//from SO
 var roomCode = gup('id', window.location.href);
+var genericSocket = io("/");
+genericSocket.emit('newRoom',roomCode);
 var myRoom = io("/"+roomCode);
-function updateCoords(pushC,pushY){
+function updateCoords(pushX,pushY){
 	myRoom.emit('pushCoordinates',{
 		'x':pushX,
 		'y':pushY

@@ -58,8 +58,9 @@ function Player(x, y, w, h, poly){
 			}
 			this.y = tempy + 1;
 		}else if (keyIsDown(DOWN_ARROW)) this.y+=this.s;
+		updateCoords(this.x,this.y);
 	}
-
+	
 	this.drawPlayer = function(){
 		push();
 		fill(0,0,0);
