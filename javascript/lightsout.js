@@ -41,7 +41,7 @@ function setup(){
 	poly.push(makeWall(cw - 150, ch - 150, cw - 150, ch));
 	poly.push(makeWall(cw - 150, ch - 150, cw - 40, ch - 150)); // HORIZONTAL
 	poly.push(makeWall(cw - 150, ch - 395, cw - 150, ch - 150)); // VERTICAL
-	poly.push(makeWall(cw - 150, ch - 445, cw - 150, ch - 435));
+	poly.push(makeWall(cw - 150, ch - 445, cw - 150, ch - 435)); // VERTICAL
 	poly.push(makeWall(cw - 150, ch - 445, cw - 60, ch - 445)); // HORIZONTAL
 	poly.push(makeWall(cw - 0, ch - 445, cw - 20, ch - 445)); // HORIZONTAL
 	poly.push(makeWall(cw - 150, ch - 695, cw - 150, ch - 445)); // VERTICAL
@@ -71,6 +71,8 @@ function setup(){
 	poly.push(makeWall(cw - 575, ch - 740, cw - 575, ch - 735)); // VERTICAL
 	poly.push(makeWall(cw - 575, ch - 695, cw - 575, ch - 690)); // VERTICAL
 	poly.push(makeWall(cw - 625, ch - 690, cw - 575, ch - 690)); // HORIZONTAL
+	poly.push(makeWall(cw - 250, ch - 265, cw - 220, ch - 265)); // HORIZONTAL
+	poly.push(makeWall(cw - 180, ch - 265, cw - 150, ch - 265)); // HORIZONTAL
 
 
 
