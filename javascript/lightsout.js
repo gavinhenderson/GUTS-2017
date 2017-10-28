@@ -24,6 +24,7 @@ function setup(){
 }
 
 function draw(){
+	getCoordinates();
 	background(0,120,0);
 	fill(0, 0, 255);
 	beginShape();

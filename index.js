@@ -1,42 +1,54 @@
+//Create server variables
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+
+//Create static files
 app.use(express.static('public'));
 app.use(express.static('html'));
 app.use("/p5",express.static('p5'));
 app.use("/javascript",express.static('javascript'))
 
+//Serve homepage
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+//server game page
 app.get('/play', function(req,res){
   res.sendFile(__dirname + "/html/lightsout.html");
 });
 
+//On a new connection only used to create a room
 io.on('connection', function(socket){
+  //newRoom event
   socket.on('newRoom', function(roomName){
     createRoom(roomName);
-    console.log('this ran');
-  });
-  socket.on('disconnect', function(){
   });
 });
 
+//Create a new room
 function createRoom(roomName){
-  console.log(roomName);
+  //Create a room
   var room = io.of(roomName);
+  var x = 500;
+  var y = 500;
+  //Room connection function
   room.on('connection',function(socket){
-    console.log("User connected to "+roomName);
-    socket.on('pushCoordinates', function(coordinates){
-      room.emit('pullCoordinates',{
-        'x': coordinates.x,
-        'y': coordinates.y
-      })
+
+    //coordinates setter
+    socket.on('setCoordinates', function(coordinates){
+      x = coordinates.x;
+      y = coordinates.y;
     });
-    socket.on('disconnect', function(){
-      console.log("User disconnect from "+roomName);
+
+    //coordinates getter
+    socket.on('getCoordinates', function(){
+      socket.emit('updateCoords',{
+        'x': x,
+        'y': y
+      });
     });
   });
 }
