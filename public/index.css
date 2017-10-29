@@ -2,10 +2,15 @@
   width: 500px;
   height: 500px;
   margin: auto;
-  background: blue;
 }
 
 img {
 	display: block;
 	margin: auto;
+	max-width: 100%;
+    height: auto;
+}
+
+.brief{
+	background-color: rgb(241,241,212);
 }
