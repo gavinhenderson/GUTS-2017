@@ -24,7 +24,7 @@ var Guards;
 
 var connected = false;
 
-var end;  
+var end;
 function setup(){
 	//setup the
 	div = document.getElementById('lightsout');
@@ -190,11 +190,11 @@ function draw(){
 			Guards[i].drawGuard();
 		}
 	}
-	console.log(player.x);
-	console.log(player.y);
+	//console.log(player.x);
+	//console.log(player.y);
 
-	end.makeSquare(); 
-	end.checkCoordinates(player.x, player.y); 
+	end.makeSquare();
+	end.checkCoordinates(player.x, player.y);
 
 
 }
