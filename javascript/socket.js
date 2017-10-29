@@ -9,9 +9,9 @@ function getCoordinates(){
 }
 
 function createGuard(id){
-	console.log(gameID + "is trying to make a guard")
+	//console.log(gameID + "is trying to make a guard")
 	if(gameID==1) {
-		myRoom.emit('createGuard');
+		//myRoom.emit('createGuard');
 	}
 }
 
@@ -29,6 +29,10 @@ function getGuard(id){
 	myRoom.emit('getGuard',{'id':id});
 }
 
+myRoom.on('sendTime',function(timeLeft){
+	localTimer = timeLeft;
+})
+
 myRoom.on('updateCoords',function(coords){
   player.x = coords.x;
   player.y = coords.y;
@@ -36,7 +40,7 @@ myRoom.on('updateCoords',function(coords){
 });
 
 myRoom.on('sendGuard',function(guardData){
-	console.log(guardData);
+	//console.log(guardData);
 	Guards[guardData.id].x = guardData.x;
 	Guards[guardData.id].y = guardData.y;
 })
@@ -53,7 +57,7 @@ function getPlayerNo(){
 
 
 myRoom.on('getPlayerID', function(playerID) {
-		console.log("player id sent back");
+		//console.log("player id sent back");
     gameID = playerID;
 		//make guard on canvas
 		Guards = [];

@@ -1,5 +1,5 @@
 function Player(x, y, w, h, poly){
-	this.s = 5;
+	this.s = 1.75;
 	this.x = x;
 	this.y = y;
 	this.w = w;
@@ -16,10 +16,10 @@ function Player(x, y, w, h, poly){
 			hitr = collideRectPoly(this.x + this.s,this.y,this.w,this.h,this.poly[i]);
 			hitt = collideRectPoly(this.x,this.y - this.s,this.w,this.h,this.poly[i]);
 			hitb = collideRectPoly(this.x,this.y + this.s,this.w,this.h,this.poly[i]);
-			if(hitl && keyIsDown(LEFT_ARROW) && polylist[0] == 0) polylist[0] = poly[i] 
-			if(hitr && keyIsDown(RIGHT_ARROW)) polylist[1] = poly[i] 
-			if(hitt && keyIsDown(UP_ARROW)) polylist[2] = poly[i] 
-			if(hitb && keyIsDown(DOWN_ARROW)) polylist[3] = poly[i] 
+			if(hitl && keyIsDown(LEFT_ARROW) && polylist[0] == 0) polylist[0] = poly[i]
+			if(hitr && keyIsDown(RIGHT_ARROW)) polylist[1] = poly[i]
+			if(hitt && keyIsDown(UP_ARROW)) polylist[2] = poly[i]
+			if(hitb && keyIsDown(DOWN_ARROW)) polylist[3] = poly[i]
 		}
 		if(polylist[0] != 0 || polylist[1] != 0 || polylist[2] != 0 || polylist[3] != 0){
 			for(i = 0; i < polylist.length; i++){
@@ -101,7 +101,7 @@ function Player(x, y, w, h, poly){
 			getCoordinates();
 		}
 		push();
-		fill(0,0,0);
+		fill(255,0,0);
 		rect(this.x, this.y, this.w, this.h);
 		pop();
 	}

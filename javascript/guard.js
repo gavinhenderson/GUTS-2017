@@ -9,7 +9,7 @@ function Guard(x, y, w, h, poly,path,id){
   this.hit = false;
   this.poly = poly;
   this.path = path;
-  console.log(path)
+  //console.log(path)
   this.currentTarget = 0;
   this.id = id;
   createGuard();
@@ -17,6 +17,11 @@ function Guard(x, y, w, h, poly,path,id){
 
 
   this.drawGuard = function(){
+    if(collidePointRect(player.x,player.y,this.x,this.y,this.w,this.h)){
+      alert("Game over u lose");
+      window.location.href = "/";
+    }
+
     if(gameID==1){
       if(this.currentTarget>=this.path.length){
         this.currentTarget=0;
@@ -51,13 +56,13 @@ function Guard(x, y, w, h, poly,path,id){
     }
     else if(gameID==2) {
       getGuard(this.id);
-      console.log("test");
-      console.log(this.x,this.y);
+      //console.log("test");
+      //console.log(this.x,this.y);
     }
-    console.log("this test")
+    //console.log("this test")
 
     push();
-		fill(255,0,0);
+		fill(0,0,0);
 		rect(this.x, this.y, this.w, this.h);
 		pop();
 	}

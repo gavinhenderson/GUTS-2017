@@ -24,7 +24,11 @@ var Guards;
 
 var connected = false;
 
+var localTimer;
+
+var end;
 function setup(){
+	var localTimer = 120;
 	//setup the
 	div = document.getElementById('lightsout');
 	cw = div.offsetWidth;
@@ -91,7 +95,7 @@ function setup(){
 	poly.push(makeWall(cw - 180, ch - 265, cw - 150, ch - 265)); // HORIZONTAL
 
 	//make player on canvase
-	player = new Player(500,500,20,20, poly);
+	player = new Player(1200,680,20,20, poly);
 
 	//find out which player is playing
 	//getPlayerNo();
@@ -101,6 +105,7 @@ function setup(){
 	//console.log(gameID);
 
 	//make guard on canvas
+	end = new endPoint();
 
 }
 
@@ -140,17 +145,18 @@ function makeBox(x, y, w, h){
 }
 
 function mouseClicked(){
-	if(gameID == 2){
-		for(i = 0; i < rooms.length; i++){
-			if(rooms[i].collide(mouseX, mouseY)){
-				rooms[i].showMenu(mouseX, mouseY);
-				return;
-			}
-		}
-	}
+	//if(gameID == 2){
+		//for(i = 0; i < rooms.length; i++){
+			//if(rooms[i].collide(mouseX, mouseY)){
+				//rooms[i].showMenu(mouseX, mouseY);
+				//return;
+			//}
+		//}
+	//}
 }
 
 function draw(){
+	//console.log(localTimer);
 	background(0,120,0);
 	push();
 	strokeWeight(0);
@@ -187,5 +193,18 @@ function draw(){
 		for(i=0;i<Guards.length;i++){
 			Guards[i].drawGuard();
 		}
+	}
+	//console.log(player.x);
+	//console.log(player.y);
+
+	end.makeSquare();
+	end.checkCoordinates(player.x, player.y);
+
+	textSize(32);
+	text("Time Left: "+str(localTimer),10,30);
+	fill(0,0,255);
+	if(localTimer<0){
+		alert("You ran out of time");
+		window.location.href = "/";
 	}
 }
