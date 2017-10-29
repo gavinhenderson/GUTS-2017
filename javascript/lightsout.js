@@ -145,14 +145,14 @@ function makeBox(x, y, w, h){
 }
 
 function mouseClicked(){
-	if(gameID == 2){
-		for(i = 0; i < rooms.length; i++){
-			if(rooms[i].collide(mouseX, mouseY)){
-				rooms[i].showMenu(mouseX, mouseY);
-				return;
-			}
-		}
-	}
+	//if(gameID == 2){
+		//for(i = 0; i < rooms.length; i++){
+			//if(rooms[i].collide(mouseX, mouseY)){
+				//rooms[i].showMenu(mouseX, mouseY);
+				//return;
+			//}
+		//}
+	//}
 }
 
 function draw(){
