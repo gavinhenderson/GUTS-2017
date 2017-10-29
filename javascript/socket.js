@@ -29,6 +29,10 @@ function getGuard(id){
 	myRoom.emit('getGuard',{'id':id});
 }
 
+myRoom.on('sendTime',function(timeLeft){
+	localTimer = timeLeft;
+})
+
 myRoom.on('updateCoords',function(coords){
   player.x = coords.x;
   player.y = coords.y;

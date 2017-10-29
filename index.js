@@ -30,9 +30,12 @@ io.on('connection', function(socket){
 
 //Create a new room
 function createRoom(roomName){
-  console.log("Created Room: "+ roomName);
+  //console.log("Created Room: "+ roomName);
   var PlayerCount = 1;
-
+  var Countdown = 120;
+  setInterval(function(){
+    Countdown--;
+  },1000);
   //Create a room
   var room = io.of(roomName);
   var x = 1268;
@@ -59,6 +62,9 @@ function createRoom(roomName){
     }
     socket.emit('getPlayerID', playerID);
 
+    setInterval(function(){
+      socket.emit('sendTime',Countdown);
+    },1000);
 
     socket.on('disconnect', function () {
         if(playerID == 1){
@@ -77,7 +83,7 @@ function createRoom(roomName){
     socket.on('setCoordinates', function(coordinates){
       x = coordinates.x;
       y = coordinates.y;
-      console.log(Guards);
+      //console.log(Guards);
     });
 
     //coordinates getter
