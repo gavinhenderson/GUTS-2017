@@ -29,7 +29,7 @@ function Room(x, y, w, h){
 		pop();
 	}
 
-	this.drawMenu = function(){
+	/*this.drawMenu = function(){
 		if(this.clicked){
 			console.log(this.list.length)
 			//for(i = 0; i < this.list.length; i++){
@@ -48,7 +48,7 @@ function Room(x, y, w, h){
 		textSize(this.mh - 4);
 		text(s, this.mx + p, this.my + mh + p);
 		pop();
-	}
+	}*/
 
 	this.collide = function(x,y){
 		if(collidePointRect(x, y, this.x, this.y, this.w, this.h)){
@@ -57,7 +57,7 @@ function Room(x, y, w, h){
 			return false;
 		}
 	}
-
+	/*
 	this.showMenu = function(x,y){
 		push();
 		if(this.clicked){
@@ -77,7 +77,7 @@ function Room(x, y, w, h){
 			this.clicked = true;
 		}
 		pop();
-	}
+	}*/
 
 	this.dark = function(x, y){
 		if(gameID==1){
@@ -85,7 +85,7 @@ function Room(x, y, w, h){
 			fill(0);
 			rect(this.x, this.y, this.w, this.h);
 		}
-		this.drawMenu();
+		//this.drawMenu();
 	}
 	}
 

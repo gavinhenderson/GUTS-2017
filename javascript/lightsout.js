@@ -95,7 +95,7 @@ function setup(){
 	poly.push(makeWall(cw - 180, ch - 265, cw - 150, ch - 265)); // HORIZONTAL
 
 	//make player on canvase
-	player = new Player(1268,716,20,20, poly);
+	player = new Player(1200,680,20,20, poly);
 
 	//find out which player is playing
 	//getPlayerNo();

@@ -38,8 +38,8 @@ function createRoom(roomName){
   },1000);
   //Create a room
   var room = io.of(roomName);
-  var x = 1268;
-  var y = 716;
+  var x = 1200;
+  var y = 680;
   var Player1 = false;
   var Player2 = false;
   var Guards = [[]];
@@ -77,7 +77,7 @@ function createRoom(roomName){
     });
 
     //var playerID = PlayerCou
-    console.log("Player "+playerID + " connected");
+    console.log("Player "+ playerID + " connected");
 
     //coordinates setter
     socket.on('setCoordinates', function(coordinates){
@@ -95,9 +95,9 @@ function createRoom(roomName){
     });
 
     socket.on('createGuard',function(){
-      console.log("this should make a guard")
+      //console.log("this should make a guard")
       Guards.push([0,0]);
-      console.log(Guards);
+      //console.log(Guards);
     });
 
     socket.on('getGuard', function(idJSON){

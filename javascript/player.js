@@ -1,5 +1,5 @@
 function Player(x, y, w, h, poly){
-	this.s = 5;
+	this.s = 1.75;
 	this.x = x;
 	this.y = y;
 	this.w = w;

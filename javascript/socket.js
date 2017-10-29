@@ -11,7 +11,7 @@ function getCoordinates(){
 function createGuard(id){
 	//console.log(gameID + "is trying to make a guard")
 	if(gameID==1) {
-		myRoom.emit('createGuard');
+		//myRoom.emit('createGuard');
 	}
 }
 
