@@ -20,7 +20,10 @@ this.makeSquare = function()
 this.checkCoordinates = function(x,y)
 {
 	if(collidePointRect(x,y,this.xEndPoint,this.yEndPoint,this.widthEndPoint,this.heightEndPoint)){ //if the player is in the box
+		if(!wonEnd){
 		alert("GAME WON");//do something cos its finished!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		}
+		wonEnd = true;
 		window.location.href = "/";
 	}
 

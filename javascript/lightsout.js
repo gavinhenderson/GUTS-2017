@@ -25,10 +25,15 @@ var Guards;
 var connected = false;
 
 var localTimer;
-
+var timeout;
+var hitByGuard;
+var wonEnd;
 var end;
 function setup(){
-	var localTimer = 120;
+	localTimer = 120;
+	timeout = false;
+	hitByGuard = false;
+	wonEnd = false;
 	//setup the
 	div = document.getElementById('lightsout');
 	cw = div.offsetWidth;
@@ -204,7 +209,10 @@ function draw(){
 	text("Time Left: "+str(localTimer),10,30);
 	fill(0,0,255);
 	if(localTimer<0){
-		alert("You ran out of time");
+		if(!timeout){
+			alert("You ran out of time");
+		}
+		timeout = true;
 		window.location.href = "/";
 	}
 }
