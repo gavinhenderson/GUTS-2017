@@ -4,3 +4,8 @@
   margin: auto;
   background: blue;
 }
+
+img {
+	display: block;
+	margin: auto;
+}
