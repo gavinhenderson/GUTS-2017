@@ -24,21 +24,21 @@ function Guard(x, y, w, h, poly,path,id){
 
       if (this.x<path[this.currentTarget][0])
       {
-        this.x += 1;
+        this.x += 2;
       }
       else if (this.x>path[this.currentTarget][0])
       {
-        this.x -= 1;
+        this.x -= 1.5;
       }
       else if (this.x==path[this.currentTarget][0]) {
         this.x = path[this.currentTarget][0];
       }
 
       if (this.y<path[this.currentTarget][1]){
-        this.y += 1;
+        this.y += 2;
       }
       else if (this.y>path[this.currentTarget][1]){
-        this.y -= 1;
+        this.y -= 1.5;
       }
       else if (this.y==path[this.currentTarget][1]) {
         this.y = path[this.currentTarget][1];
