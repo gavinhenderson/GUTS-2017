@@ -24,6 +24,7 @@ var Guards;
 
 var connected = false;
 
+var end;  
 function setup(){
 	//setup the
 	div = document.getElementById('lightsout');
@@ -91,7 +92,7 @@ function setup(){
 	poly.push(makeWall(cw - 180, ch - 265, cw - 150, ch - 265)); // HORIZONTAL
 
 	//make player on canvase
-	player = new Player(500,500,20,20, poly);
+	player = new Player(1268,716,20,20, poly);
 
 	//find out which player is playing
 	//getPlayerNo();
@@ -101,6 +102,7 @@ function setup(){
 	//console.log(gameID);
 
 	//make guard on canvas
+	end = new endPoint();
 
 }
 
@@ -188,4 +190,11 @@ function draw(){
 			Guards[i].drawGuard();
 		}
 	}
+	console.log(player.x);
+	console.log(player.y);
+
+	end.makeSquare(); 
+	end.checkCoordinates(player.x, player.y); 
+
+
 }

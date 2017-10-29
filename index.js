@@ -35,8 +35,8 @@ function createRoom(roomName){
 
   //Create a room
   var room = io.of(roomName);
-  var x = 500;
-  var y = 500;
+  var x = 1268;
+  var y = 716;
   var Player1 = false;
   var Player2 = false;
   var Guards = [[]];
