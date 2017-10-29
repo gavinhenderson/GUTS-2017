@@ -18,7 +18,10 @@ function Guard(x, y, w, h, poly,path,id){
 
   this.drawGuard = function(){
     if(collidePointRect(player.x,player.y,this.x,this.y,this.w,this.h)){
-      alert("Game over u lose");
+      if(!hitByGuard){
+        alert("Game over u lose");
+      }
+      hitByGuard = true;
       window.location.href = "/";
     }
 
