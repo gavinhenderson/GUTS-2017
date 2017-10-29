@@ -39,7 +39,7 @@ function createRoom(roomName){
   var y = 500;
   var Player1 = false;
   var Player2 = false;
-
+  var Guards = [[]];
   //Room connection function
   room.on('connection',function(socket){
     //Set playerID
@@ -57,6 +57,8 @@ function createRoom(roomName){
     else{
         socket.emit('kick');
     }
+    socket.emit('getPlayerID', playerID);
+
 
     socket.on('disconnect', function () {
         if(playerID == 1){
@@ -75,6 +77,7 @@ function createRoom(roomName){
     socket.on('setCoordinates', function(coordinates){
       x = coordinates.x;
       y = coordinates.y;
+      console.log(Guards);
     });
 
     //coordinates getter
@@ -85,11 +88,23 @@ function createRoom(roomName){
       });
     });
 
-    socket.on('getPlayerNo', function(){
-      socket.emit('sendPlayerNo',{
-        'playerNo':playerID
-      });
-    })
+    socket.on('createGuard',function(){
+      console.log("this should make a guard")
+      Guards.push([0,0]);
+      console.log(Guards);
+    });
+
+    socket.on('getGuard', function(idJSON){
+      socket.emit('sendGuard',{
+        'x': Guards[idJSON.id][0],
+        'y': Guards[idJSON.id][1],
+        'id': idJSON.id
+      })
+    });
+
+    socket.on('setGuard',function(guardInfo){
+      Guards[guardInfo.id] = [guardInfo.x, guardInfo.y];
+    });
   });
 }
 

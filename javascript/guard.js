@@ -1,4 +1,4 @@
-function Guard(x, y, w, h, poly,path){
+function Guard(x, y, w, h, poly,path,id){
   this.s = 10;
   this.x = x;
   this.y = y;
@@ -11,40 +11,51 @@ function Guard(x, y, w, h, poly,path){
   this.path = path;
   console.log(path)
   this.currentTarget = 0;
+  this.id = id;
+  createGuard();
 
 
 
   this.drawGuard = function(){
-    if(this.currentTarget>=this.path.length){
-      this.currentTarget=0;
-    }
+    if(gameID==1){
+      if(this.currentTarget>=this.path.length){
+        this.currentTarget=0;
+      }
 
-    if (this.x<path[this.currentTarget][0])
-    {
-      this.x += 1;
-    }
-    else if (this.x>path[this.currentTarget][0])
-    {
-      this.x -= 1;
-    }
-    else if (this.x==path[this.currentTarget][0]) {
-      this.x = path[this.currentTarget][0];
-    }
+      if (this.x<path[this.currentTarget][0])
+      {
+        this.x += 1;
+      }
+      else if (this.x>path[this.currentTarget][0])
+      {
+        this.x -= 1;
+      }
+      else if (this.x==path[this.currentTarget][0]) {
+        this.x = path[this.currentTarget][0];
+      }
 
-    if (this.y<path[this.currentTarget][1]){
-      this.y += 1;
-    }
-    else if (this.y>path[this.currentTarget][1]){
-      this.y -= 1;
-    }
-    else if (this.y==path[this.currentTarget][1]) {
-      this.y = path[this.currentTarget][1];
-    }
+      if (this.y<path[this.currentTarget][1]){
+        this.y += 1;
+      }
+      else if (this.y>path[this.currentTarget][1]){
+        this.y -= 1;
+      }
+      else if (this.y==path[this.currentTarget][1]) {
+        this.y = path[this.currentTarget][1];
+      }
 
-    if(this.x==path[this.currentTarget][0] && this.y==path[this.currentTarget][1]){
-      this.currentTarget++;
+      if(this.x==path[this.currentTarget][0] && this.y==path[this.currentTarget][1]){
+        this.currentTarget++;
+      }
+      setGuard(this.x,this.y,this.id);
     }
-    //this.y += 1;
+    else if(gameID==2) {
+      getGuard(this.id);
+      console.log("test");
+      console.log(this.x,this.y);
+    }
+    console.log("this test")
+
     push();
 		fill(255,0,0);
 		rect(this.x, this.y, this.w, this.h);

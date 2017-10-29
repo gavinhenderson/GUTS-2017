@@ -20,6 +20,10 @@ var poly = [];
 //Rooms on the canvas
 var rooms = [];
 
+var Guards;
+
+var connected = false;
+
 function setup(){
 	//setup the
 	div = document.getElementById('lightsout');
@@ -90,10 +94,14 @@ function setup(){
 	player = new Player(500,500,20,20, poly);
 
 	//find out which player is playing
-	getPlayerNo();
+	//getPlayerNo();
+
+	//console.log(gameID);
+	setTimeout(function(){},2000);
+	//console.log(gameID);
 
 	//make guard on canvas
-	guard = new Guard(100,100,20,20, poly,[[200,200],[100,100],[300,50]])
+
 }
 
 function makeWall(x1, y1, x2, y2){
@@ -174,5 +182,10 @@ function draw(){
 		}
 	}
 	player.drawPlayer(gameID);
-	guard.drawGuard();
+
+	if(connected){
+		for(i=0;i<Guards.length;i++){
+			Guards[i].drawGuard();
+		}
+	}
 }
